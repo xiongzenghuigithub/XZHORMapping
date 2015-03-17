@@ -3,6 +3,7 @@
 
 target 'FMDBWrapper' do
 pod 'FMDB'
+pod 'FCFileManager'
 pod 'AFNetworking'
 pod 'AutoCoding'
 end

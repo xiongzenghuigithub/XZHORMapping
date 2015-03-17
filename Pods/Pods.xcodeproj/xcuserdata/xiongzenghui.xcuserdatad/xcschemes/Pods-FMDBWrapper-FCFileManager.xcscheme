@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43C2F1A4DCB8A31308D9CA2C"
-               BuildableName = "libPods-FMDBWrapper-FMDB.a"
-               BlueprintName = "Pods-FMDBWrapper-FMDB"
+               BlueprintIdentifier = "F8E404D43E1A74E77FAAB616"
+               BuildableName = "libPods-FMDBWrapper-FCFileManager.a"
+               BlueprintName = "Pods-FMDBWrapper-FCFileManager"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

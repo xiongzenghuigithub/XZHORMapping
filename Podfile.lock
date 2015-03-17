@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AutoCoding (2.2.1)
+  - FCFileManager (1.0.7)
   - FMDB (2.5):
     - FMDB/standard (= 2.5)
   - FMDB/common (2.5)
@@ -30,11 +31,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - AutoCoding
+  - FCFileManager
   - FMDB
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AutoCoding: 5165b83fa6199573cc82dfb5d2cc72e11b458a1f
+  FCFileManager: 5c46704afcc14dd7616e8b8b9c2ba79b14f7f800
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
 
 COCOAPODS: 0.35.0
