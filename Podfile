@@ -6,6 +6,9 @@ pod 'FMDB'
 pod 'FCFileManager'
 pod 'AFNetworking'
 pod 'AutoCoding'
+pod 'BZObjectStore'
+pod 'BZObjectStore/ActiveRecord'
+pod 'FMDBHelpers'
 end
 
 target 'FMDBWrapperTests' do

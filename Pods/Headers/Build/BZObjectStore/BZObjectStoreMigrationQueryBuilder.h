@@ -1,0 +1,1 @@
+../../../BZObjectStore/BZObjectStore/Core/Classes/Migration/BZObjectStoreMigrationQueryBuilder.h

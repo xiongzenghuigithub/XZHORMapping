@@ -1,0 +1,1 @@
+../../../BZObjectStore/BZObjectStore/ActiveRecord/NSObject+ActiveRecordParse.h

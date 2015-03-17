@@ -1,0 +1,5 @@
+#include "Pods-FMDBWrapper-BZObjectStore.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/BZObjectStore" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AutoCoding" "${PODS_ROOT}/Headers/Public/BZObjectStore" "${PODS_ROOT}/Headers/Public/BZRuntime" "${PODS_ROOT}/Headers/Public/FCFileManager" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/FMDBHelpers"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}

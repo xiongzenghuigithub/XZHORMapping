@@ -14,12 +14,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FMDBWrapper-BZObjectStore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FMDBWrapper-BZRuntime.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FMDBWrapper-FCFileManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-FMDBWrapper-FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FMDBWrapper-FMDBHelpers.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -31,32 +46,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0145FD2217871D6188986E2E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2F7237E2914F55224E29DD49</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>43C2F1A4DCB8A31308D9CA2C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF20C808F6608F04EB6C53AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F8E404D43E1A74E77FAAB616</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

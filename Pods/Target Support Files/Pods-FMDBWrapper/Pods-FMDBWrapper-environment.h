@@ -54,6 +54,30 @@
 #define COCOAPODS_VERSION_MINOR_AutoCoding 2
 #define COCOAPODS_VERSION_PATCH_AutoCoding 1
 
+// BZObjectStore
+#define COCOAPODS_POD_AVAILABLE_BZObjectStore
+#define COCOAPODS_VERSION_MAJOR_BZObjectStore 1
+#define COCOAPODS_VERSION_MINOR_BZObjectStore 3
+#define COCOAPODS_VERSION_PATCH_BZObjectStore 13
+
+// BZObjectStore/ActiveRecord
+#define COCOAPODS_POD_AVAILABLE_BZObjectStore_ActiveRecord
+#define COCOAPODS_VERSION_MAJOR_BZObjectStore_ActiveRecord 1
+#define COCOAPODS_VERSION_MINOR_BZObjectStore_ActiveRecord 3
+#define COCOAPODS_VERSION_PATCH_BZObjectStore_ActiveRecord 13
+
+// BZObjectStore/Core
+#define COCOAPODS_POD_AVAILABLE_BZObjectStore_Core
+#define COCOAPODS_VERSION_MAJOR_BZObjectStore_Core 1
+#define COCOAPODS_VERSION_MINOR_BZObjectStore_Core 3
+#define COCOAPODS_VERSION_PATCH_BZObjectStore_Core 13
+
+// BZRuntime
+#define COCOAPODS_POD_AVAILABLE_BZRuntime
+#define COCOAPODS_VERSION_MAJOR_BZRuntime 1
+#define COCOAPODS_VERSION_MINOR_BZRuntime 0
+#define COCOAPODS_VERSION_PATCH_BZRuntime 5
+
 // FCFileManager
 #define COCOAPODS_POD_AVAILABLE_FCFileManager
 #define COCOAPODS_VERSION_MAJOR_FCFileManager 1
@@ -77,4 +101,10 @@
 #define COCOAPODS_VERSION_MAJOR_FMDB_standard 2
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 5
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
+
+// FMDBHelpers
+#define COCOAPODS_POD_AVAILABLE_FMDBHelpers
+#define COCOAPODS_VERSION_MAJOR_FMDBHelpers 0
+#define COCOAPODS_VERSION_MINOR_FMDBHelpers 0
+#define COCOAPODS_VERSION_PATCH_FMDBHelpers 7
 
