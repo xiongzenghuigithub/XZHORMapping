@@ -46,6 +46,12 @@
     
     id obj = [NSObject objectWithContentsOfFile:path];
     
+    [self asyncSaveWithSuccessCompletion:^{
+        
+    } FailCompletion:^{
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

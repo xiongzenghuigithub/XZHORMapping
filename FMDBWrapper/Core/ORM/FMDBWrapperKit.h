@@ -10,6 +10,6 @@
 #define FMDBWrapper_FMDBWrapperKit_h
 
 #import <AutoCoding/AutoCoding.h>
-#import <FCFileManager/FCFileManager.h>
+#import "NSObject+ORM.h"
 
 #endif

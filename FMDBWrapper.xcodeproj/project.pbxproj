@@ -21,6 +21,8 @@
 		0F817D251AB7C02E00D4E651 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F817D241AB7C02E00D4E651 /* Images.xcassets */; };
 		0F817D281AB7C02E00D4E651 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F817D261AB7C02E00D4E651 /* LaunchScreen.xib */; };
 		0F817D341AB7C02E00D4E651 /* FMDBWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F817D331AB7C02E00D4E651 /* FMDBWrapperTests.m */; };
+		0FA7CC1D1AB9297E00441124 /* FMDatabaseQueue+ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7CC1C1AB9297E00441124 /* FMDatabaseQueue+ORM.m */; };
+		0FA7CC201AB9298E00441124 /* FMResultSet+ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7CC1F1AB9298E00441124 /* FMResultSet+ORM.m */; };
 		217237211AB8709C00578FA4 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 217237201AB8709C00578FA4 /* NSDate+Utilities.m */; };
 		217237241AB870C400578FA4 /* GHNSData+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 217237231AB870C400578FA4 /* GHNSData+Utils.m */; };
 		2172372A1AB870F900578FA4 /* NSObject+ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 217237291AB870F900578FA4 /* NSObject+ObjectMap.m */; };
@@ -65,6 +67,10 @@
 		0F817D2D1AB7C02E00D4E651 /* FMDBWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FMDBWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F817D321AB7C02E00D4E651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F817D331AB7C02E00D4E651 /* FMDBWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBWrapperTests.m; sourceTree = "<group>"; };
+		0FA7CC1B1AB9297E00441124 /* FMDatabaseQueue+ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+ORM.h"; sourceTree = "<group>"; };
+		0FA7CC1C1AB9297E00441124 /* FMDatabaseQueue+ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+ORM.m"; sourceTree = "<group>"; };
+		0FA7CC1E1AB9298E00441124 /* FMResultSet+ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMResultSet+ORM.h"; sourceTree = "<group>"; };
+		0FA7CC1F1AB9298E00441124 /* FMResultSet+ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMResultSet+ORM.m"; sourceTree = "<group>"; };
 		1585B45F52052F9819CDC493 /* Pods-FMDBWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FMDBWrapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-FMDBWrapper/Pods-FMDBWrapper.release.xcconfig"; sourceTree = "<group>"; };
 		2172371F1AB8709C00578FA4 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		217237201AB8709C00578FA4 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
@@ -116,6 +122,10 @@
 				0F7226C81AB835A1005B2BC6 /* NSObject+ORM.m */,
 				0F0DA1941AB8333A00F91AA1 /* SQLCondition.h */,
 				0F0DA1951AB8333A00F91AA1 /* SQLCondition.m */,
+				0FA7CC1B1AB9297E00441124 /* FMDatabaseQueue+ORM.h */,
+				0FA7CC1C1AB9297E00441124 /* FMDatabaseQueue+ORM.m */,
+				0FA7CC1E1AB9298E00441124 /* FMResultSet+ORM.h */,
+				0FA7CC1F1AB9298E00441124 /* FMResultSet+ORM.m */,
 			);
 			path = ORM;
 			sourceTree = "<group>";
@@ -368,8 +378,10 @@
 				217237241AB870C400578FA4 /* GHNSData+Utils.m in Sources */,
 				0F817D1A1AB7C02E00D4E651 /* AppDelegate.m in Sources */,
 				0F817D171AB7C02E00D4E651 /* main.m in Sources */,
+				0FA7CC201AB9298E00441124 /* FMResultSet+ORM.m in Sources */,
 				2172372D1AB8710F00578FA4 /* NSObject+SuperClass.m in Sources */,
 				0F0DA19A1AB8333A00F91AA1 /* SQLCondition.m in Sources */,
+				0FA7CC1D1AB9297E00441124 /* FMDatabaseQueue+ORM.m in Sources */,
 				0F0DA1861AB8330B00F91AA1 /* Person.m in Sources */,
 				0F817D201AB7C02E00D4E651 /* ViewController.m in Sources */,
 				0F7226C91AB835A1005B2BC6 /* NSObject+ORM.m in Sources */,

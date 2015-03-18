@@ -7,7 +7,12 @@
 //
 
 #import "NSObject+ORM.h"
+#import "FMDatabaseQueue+ORM.h"
 
 @implementation NSObject (ORM)
+
+- (void)asyncSaveWithSuccessCompletion:(void (^)(void))success FailCompletion:(void (^)(void))fail {
+    
+}
 
 @end
