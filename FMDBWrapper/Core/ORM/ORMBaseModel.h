@@ -1,18 +1,37 @@
+
 //
-//  NSObject+ORM.h
+//  ORMBaseModel.h
 //  FMDBWrapper
 //
-//  Created by sfpay on 15/3/17.
+//  Created by sfpay on 15/3/18.
 //  Copyright (c) 2015年 zain. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "SQLCondition.h"
+#import "ObjectRelationShip.h"
 
-@interface NSObject (ORM)
+@interface ORMBaseModel : NSObject
+
+@property (copy, nonatomic) NSString *createDate;
+@property (copy, nonatomic) NSString *updateDate;
 
 #pragma mark - 与数据库映射关系
-- (NSString *)tableName;
+
+/* 表名 */
++ (NSString *)tableName;
+
+/* 主键 */
++(NSString*)primaryKey;
+
+/* 联合主键 */
++(NSArray*)primaryKeyUnionArray;
+
+/* 自定义表字段类型的属性名 【属性名 : 表字段名】 */
++(NSDictionary *)propertyMapping;
+
+/* 指出对象的关系 */
++ (NSArray *)relationShips;
 
 #pragma mark - DB Operation
 
@@ -39,6 +58,5 @@
                        FailCompletion:(void (^)(void)) fail
                              PageSize:(NSInteger) pageSize
                            StartIndex:(NSInteger) startIndex;
-
 
 @end

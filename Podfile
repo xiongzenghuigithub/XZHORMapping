@@ -8,7 +8,7 @@ pod 'AFNetworking'
 pod 'AutoCoding'
 pod 'BZObjectStore'
 pod 'BZObjectStore/ActiveRecord'
-pod 'FMDBHelpers'
+#pod 'FMDBHelpers'
 end
 
 target 'FMDBWrapperTests' do

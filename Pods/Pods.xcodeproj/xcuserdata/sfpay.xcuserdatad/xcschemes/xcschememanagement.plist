@@ -8,146 +8,71 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-FMDBWrapper-AutoCoding.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-FMDBWrapper-BZObjectStore.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-FMDBWrapper-BZRuntime.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-FMDBWrapper-FCFileManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-FMDBWrapper-FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>Pods-FMDBWrapper-FMDBHelpers.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>Pods-FMDBWrapper-FMDBMigrationManager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-FMDBWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0145FD2217871D6188986E2E</key>
+		<key>10260F36C495DDECA178C215</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BCD08C09661A33B7918171C</key>
+		<key>1EBCA39B029A2F34B5D2FF27</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F7237E2914F55224E29DD49</key>
+		<key>2845F0366932F0FB9542C0D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3A1CC6E338C7B8A15F590C29</key>
+		<key>783938BAE676CE4207E8E9C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D21052D8BE6E23854909679</key>
+		<key>DB5971A9B816985F75DFC4E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>422C4DA2574D5DD59CFF5C35</key>
+		<key>E3729EA6656CE1B1709E2E9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43C2F1A4DCB8A31308D9CA2C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>52F8C55D0E1F75A39A15F5A9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5D70432B3355ACD47D36EC50</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8E38EB64443FFBA620ADFE4F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>962BFEB5264462F3F62A81D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9F8BEEF4F5693B4BD4922DC7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D2F449E20D953A0528FFA05D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D607365784FC82A0AE46E954</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D7C3BAD43A1EBE84124BF511</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF20C808F6608F04EB6C53AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E0973B10FBF6E9F351718910</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F8E404D43E1A74E77FAAB616</key>
+		<key>FD9FE13FBC311BAF25FA4A6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

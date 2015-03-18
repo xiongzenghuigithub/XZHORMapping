@@ -13,7 +13,6 @@
 /* 在沙盒缓存目录创建DB文件 */
 + (FMDatabaseQueue *)queueForCachePathName:(NSString *) fileName;
 
-
 @end
 
 @interface FMDatabaseQueue (Singleton)

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ORMBaseModel.h"
+#import "Person.h"
 
+@interface PersonList : ORMBaseModel
 
-@interface PersonList : NSObject
-
+@property (copy, nonatomic) NSString *personListId;
 @property (nonatomic, strong) NSArray *personList;
 
 @end

@@ -10,6 +10,5 @@
 #define FMDBWrapper_FMDBWrapperKit_h
 
 #import <AutoCoding/AutoCoding.h>
-#import "NSObject+ORM.h"
 
 #endif

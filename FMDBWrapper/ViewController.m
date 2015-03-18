@@ -13,6 +13,8 @@
 #import "PersonList.h"
 #import "Person.h"
 
+#import <BZObjectStore.h>
+
 @interface ViewController ()
 
 @end
@@ -40,17 +42,33 @@
     list.personList = @[person, person1];
     
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path = [NSString stringWithFormat:@"%@/%@", documentPath, @"personArray"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@", documentPath, @"personList.sqlite"];
 
-    [list writeToFile:path atomically:YES];
-    
-    id obj = [NSObject objectWithContentsOfFile:path];
-    
-    [self asyncSaveWithSuccessCompletion:^{
+//    [list writeToFile:path atomically:YES];
+//    
+//    id obj = [NSObject objectWithContentsOfFile:path];
+//    
+//    [self asyncSaveWithSuccessCompletion:^{
+//        
+//    } FailCompletion:^{
+//        
+//    }];
+//
+    [person asyncSaveWithSuccessCompletion:^{
         
     } FailCompletion:^{
         
     }];
+    
+//    [list asyncSaveWithSuccessCompletion:^{
+//        
+//    } FailCompletion:^{
+//        
+//    }];
+    
+//    BZObjectStore *store = [BZObjectStore openWithPath:path error:nil];
+//    [store saveObject:list error:nil];
+    
     
 }
 

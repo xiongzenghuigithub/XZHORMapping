@@ -36,8 +36,6 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
-  - FMDBHelpers (0.0.7):
-    - FMDB (~> 2.3)
 
 DEPENDENCIES:
   - AFNetworking
@@ -46,7 +44,6 @@ DEPENDENCIES:
   - BZObjectStore/ActiveRecord
   - FCFileManager
   - FMDB
-  - FMDBHelpers
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
@@ -55,6 +52,5 @@ SPEC CHECKSUMS:
   BZRuntime: 2c49a619431fd96cf7f93ed1456886fc0a6951c5
   FCFileManager: 5c46704afcc14dd7616e8b8b9c2ba79b14f7f800
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
-  FMDBHelpers: 418755fc89a6a6f43140c103fddc0e0f4658b707
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0

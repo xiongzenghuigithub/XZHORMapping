@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2F449E20D953A0528FFA05D"
+               BlueprintIdentifier = "DB5971A9B816985F75DFC4E8"
                BuildableName = "libPods-FMDBWrapper-AutoCoding.a"
                BlueprintName = "Pods-FMDBWrapper-AutoCoding"
                ReferencedContainer = "container:Pods.xcodeproj">

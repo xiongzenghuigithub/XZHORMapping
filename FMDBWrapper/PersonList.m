@@ -8,6 +8,16 @@
 
 #import "PersonList.h"
 
+
 @implementation PersonList
+
++ (NSArray *)relationShips {
+    return @[[ObjectRelationShip oneToManyRelationShipWithOne:[self class]
+                                                         Many:[Person class]]];
+}
+
++ (NSString *)primaryKey {
+    return @"personListId";
+}
 
 @end

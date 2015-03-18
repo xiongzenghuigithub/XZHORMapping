@@ -10,17 +10,7 @@
 
 @implementation FMDatabaseQueue (ORM)
 
-+ (NSString *)cacheDir {
-    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-}
 
-+ (NSString *)appendingPathAtCacheDir:(NSString *) fileName {
-    return [[self cacheDir] stringByAppendingPathComponent:fileName];
-}
-
-+ (FMDatabaseQueue *)queueForCachePathName:(NSString *)fileName {
-    return [self databaseQueueWithPath:[self appendingPathAtCacheDir:fileName]];
-}
 
 @end
 

@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ORMBaseModel.h"
 
-@interface Person : NSObject
+@interface Person : ORMBaseModel
 
+@property (copy, nonatomic) NSString *pid;
 @property (assign, nonatomic) NSInteger age;
 @property (assign, nonatomic) BOOL isMan;
 @property (copy, nonatomic) NSString *name;
