@@ -25,18 +25,16 @@
     [super viewDidLoad];
     
     Person *person = [[Person alloc] init];
+    person.pid = @"1111";
     person.name = @"dzhangsan001";
     person.age = 21;
     person.isMan = YES;
-    person.date = [NSDate date];
-    person.data = [[NSData alloc] init];
     
     Person *person1 = [[Person alloc] init];
     person1.name = @"dzhangsan001";
     person1.age = 21;
     person1.isMan = YES;
-    person1.date = [NSDate date];
-    person1.data = [[NSData alloc] init];
+
     
     PersonList *list = [[PersonList alloc] init];
     list.personList = @[person, person1];

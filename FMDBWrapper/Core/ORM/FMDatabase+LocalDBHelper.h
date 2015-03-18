@@ -16,4 +16,10 @@
                 constraints:(NSArray *)constraints
                       error:(NSError **)error_p;
 
+/* 插入数据 */
+- (BOOL)insertInto:(NSString *)tableName
+           columns:(NSArray *)columns
+            values:(NSArray *)values
+             error:(NSError **)error_p;
+
 @end

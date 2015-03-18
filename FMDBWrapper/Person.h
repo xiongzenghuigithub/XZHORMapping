@@ -15,7 +15,5 @@
 @property (assign, nonatomic) NSInteger age;
 @property (assign, nonatomic) BOOL isMan;
 @property (copy, nonatomic) NSString *name;
-@property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSData *data;
 
 @end

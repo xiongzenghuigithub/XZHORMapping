@@ -62,20 +62,26 @@ static NSString *DatabaseName = @"LocalData.db";
 
 - (void)asyncSaveWithSuccessCompletion:(void (^)(void))success FailCompletion:(void (^)(void))fail {
     
+    
     DBOperation *op = [DBOperation sharedDBOperationWithDBName:DatabaseName];
     
     __weak __typeof(self) weakSelf = self;
     [[op dbQueue] inDatabase:^(FMDatabase *db) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSError *error = nil;
         
         NSString *tName = [[strongSelf class] tableName];
         
         if ([db tableExists:tName]) {
+            
             //表已经存在
             //1. 按照当前Class类型，修正数据库表
 //            NSString *sql = [[strongSelf class] fixTableSQL];
             
+            //2. 插入数据
+            
         } else {
+            
             //表不存在
             //1. 按照当前Class类型，创建数据库表
             
@@ -114,9 +120,19 @@ static NSString *DatabaseName = @"LocalData.db";
             if ([[strongSelf class] primaryKey]) {
                 [constraints addObject:[NSString stringWithFormat:@"PRIMARY KEY (%@)" , [[strongSelf class] primaryKey]]];
                 
-                [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:nil];
-                
+                error = nil;
+                [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:&error];
             }
+            
+            //2 插入数据
+            NSMutableArray *values = [NSMutableArray array];
+            for (NSString *keyPath in columns) {
+                [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath] ];
+            }
+            
+            error = nil;
+            [db insertInto:[[strongSelf class] tableName] columns:columns values:@[values] error:&error];
+            
         }
         
     }];

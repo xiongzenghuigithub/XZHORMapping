@@ -71,6 +71,69 @@
                          error:error_p];
 }
 
+#pragma mark - insert
+/* 同时可插入多条数据 【多条数据组成一个数组】 */
+- (BOOL)insertInto:(NSString *)tableName
+           columns:(NSArray *)columns
+            values:(NSArray *)values
+             error:(NSError **)error_p
+{
+    NSParameterAssert(columns != nil);
+    NSParameterAssert(columns.count > 0);
+    NSParameterAssert(tableName != nil);
+    
+    NSMutableArray *insertSQL = [NSMutableArray array];
+    [insertSQL addObject:@"INSERT INTO"];
+    [insertSQL addObject:tableName];
+    
+    // (字段1， 字段2， 字段3 ... )
+    if (columns.count > 0) {
+        [insertSQL addObject:@"("];
+        
+        [columns enumerateObjectsUsingBlock:^(NSString * columnName, NSUInteger idx, BOOL *stop) {
+            if (idx > 0)
+            {
+                [insertSQL addObject:@","];
+            }
+            
+            [insertSQL addObject:[FMDatabase escapeIdentifier:columnName]];
+        }];
+        
+        [insertSQL addObject:@")"];
+    }
+    
+    // values (值1，值2，值3 ... )
+    NSMutableArray * flattenedValues = [[NSMutableArray alloc] initWithCapacity:(columns.count * values.count)];
+    if (values.count == 0)
+    {
+        [insertSQL addObject:@"DEFAULT VALUES"];
+    }
+    else
+    {
+        [insertSQL addObject:@"VALUES"];
+        
+        NSString * argumentTuple = [FMDatabase argumentTupleOfSize:columns.count];
+        
+        [values enumerateObjectsUsingBlock:^(NSArray * row, NSUInteger rowIdx, BOOL *stop) {
+            
+            // 每一个数据项数组长度 == 插入表的总字段长度
+            NSParameterAssert(row.count == columns.count);
+            
+            if (rowIdx > 0)
+            {
+                [insertSQL addObject:@","];
+            }
+            
+            [insertSQL addObject:argumentTuple];
+            [flattenedValues addObjectsFromArray:row];
+        }];
+    }
+    
+    return [self executeUpdate:[insertSQL componentsJoinedByString:@" "]
+          withArgumentsInArray:flattenedValues
+                         error:error_p];
+}
+
 #pragma mark - escape
 + (NSString *)escapeString:(NSString *)value {
     value = [value stringByReplacingOccurrencesOfString:@"'"
@@ -168,6 +231,25 @@ withParameterDictionary:(NSDictionary *)arguments
     }
     return successful;
 }
+
+/* (?, ?, ? ,? ) */
++ (NSString *)argumentTupleOfSize:(NSUInteger)tupleSize
+{
+    NSMutableArray * tupleString = [[NSMutableArray alloc] init];
+    [tupleString addObject:@"("];
+    for (NSUInteger columnIdx = 0; columnIdx < tupleSize; columnIdx++)
+    {
+        if (columnIdx > 0)
+        {
+            [tupleString addObject:@","];
+        }
+        [tupleString addObject:@"?"];
+    }
+    [tupleString addObject:@")"];
+    
+    return [tupleString componentsJoinedByString:@" "];
+}
+
 
 
 @end
