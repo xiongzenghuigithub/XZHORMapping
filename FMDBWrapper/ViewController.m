@@ -51,18 +51,18 @@
 //    } FailCompletion:^{
 //        
 //    }];
-//
-    [person asyncSaveWithSuccessCompletion:^{
-        
-    } FailCompletion:^{
-        
-    }];
-    
-//    [list asyncSaveWithSuccessCompletion:^{
+
+//    [person asyncSaveWithSuccessCompletion:^{
 //        
 //    } FailCompletion:^{
 //        
 //    }];
+    
+    [list asyncSaveWithSuccessCompletion:^{
+        
+    } FailCompletion:^{
+        
+    }];
     
 //    BZObjectStore *store = [BZObjectStore openWithPath:path error:nil];
 //    [store saveObject:list error:nil];

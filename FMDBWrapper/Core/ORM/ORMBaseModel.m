@@ -99,6 +99,49 @@ static NSString *DatabaseName = @"LocalData.db";
                         Class one = [ship cls1];
                         Class many = [ship cls2];
                         
+                        //先创建1 的表
+                        NSArray *columns = [[strongSelf propertyDictionary] allKeys];
+                        NSMutableArray *constraints = [NSMutableArray array];
+                        if ([[strongSelf class] primaryKey]) {
+                            NSString *constraint = [NSString stringWithFormat:@"PRIMARY KEY (%@)", [[strongSelf class] primaryKey]];
+                            [constraints addObject:constraint];
+                        }
+                        [db createTableWithName:[[strongSelf class] tableName]
+                                        columns:columns
+                                    constraints:constraints
+                                          error:nil];
+                        
+                        //再创建n 的表
+                        NSString * foreigKey = [one primaryKey];
+
+                        for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {  //属性字符串
+                            if ([strongSelf respondsToSelector:NSSelectorFromString(keyPath)]) {    //属性字符串转换 SEL
+                                id obj = [strongSelf performSelector:NSSelectorFromString(keyPath) withObject:nil]; //动态执行SEL
+                                if ([obj isKindOfClass:[NSArray class]]) {
+                                    NSArray *array = (NSArray *)obj;
+                                    id perObj = [array lastObject];
+                                    if ([perObj isKindOfClass:many]) {
+                                        //1. 字段
+                                        NSMutableArray *columns = [[[perObj propertyDictionary] allKeys] mutableCopy];
+                                        [columns addObject:[[strongSelf class] primaryKey]];
+                                        //2. 主键、外键
+                                        NSMutableArray *constraints = [NSMutableArray array];
+                                        if ([[perObj class] primaryKey]) {
+                                            NSString *primaryKeyConstraint = [NSString stringWithFormat:@"PRIMARY KEY (%@)", [[perObj class] primaryKey]];
+                                            NSString *foreignkeyConstraint = [NSString stringWithFormat:@"FOREIGN KEY(%@) REFERENCES %@(%@)", foreigKey, [[strongSelf class] tableName], [[strongSelf class] primaryKey]];
+                                            [constraints addObject:primaryKeyConstraint];
+                                            [constraints addObject:foreignkeyConstraint];
+                                        }
+                                        
+                                        //3. 建表
+                                        [db createTableWithName:[[perObj class] tableName]
+                                                        columns:columns
+                                                    constraints:constraints
+                                                          error:nil];
+                                    }
+                                }
+                            }
+                        }
                     }
                         break;
                     case ObjectRelationShipManyToMany: {
@@ -114,6 +157,8 @@ static NSString *DatabaseName = @"LocalData.db";
 
             }
             
+            return ;
+            
             //1.2 没有关联关系
             NSArray *columns = [[strongSelf propertyDictionary] allKeys];
             NSMutableArray *constraints = [NSMutableArray array];
@@ -124,10 +169,10 @@ static NSString *DatabaseName = @"LocalData.db";
                 [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:&error];
             }
             
-            //2 插入数据
+            //2 插入数据 【每一个数组 == 一个对象的所有数据项】
             NSMutableArray *values = [NSMutableArray array];
             for (NSString *keyPath in columns) {
-                [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath] ];
+                [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath]];
             }
             
             error = nil;
