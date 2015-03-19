@@ -59,4 +59,8 @@
                              PageSize:(NSInteger) pageSize
                            StartIndex:(NSInteger) startIndex;
 
+//- (void)persistentNoneRelationObjectWith:(FMDatabase __weak*)db;
+//- (void)persistentOneToManyObjectWith:(FMDatabase __weak*)db;
+//- (void)persistentNoneRelationObjectWith:(FMDatabase __weak*)db
+//                          ExcludeColumns:(NSArray *) columns;
 @end

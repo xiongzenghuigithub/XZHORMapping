@@ -95,7 +95,6 @@ static NSString *DatabaseName = @"LocalData.db";
                         Class many = [ship cls2];
                         
                         //先创建1 的表
-                        NSArray *columns = [[strongSelf propertyDictionary] allKeys];
                         NSMutableArray *insertColumns = [NSMutableArray array]; //保存去除数组属性的字段
                         NSMutableArray *constraints = [NSMutableArray array];
                         if ([[strongSelf class] primaryKey]) {
@@ -162,9 +161,10 @@ static NSString *DatabaseName = @"LocalData.db";
             }
         
             
-            //1.2 没有关联关系
+            //2 插入数据 【建立单独类表】
             if ([[[strongSelf class] relationShips] count] < 1) {
                 
+                //建立单独类的表
                 NSArray *columns = [[strongSelf propertyDictionary] allKeys];
                 NSMutableArray *constraints = [NSMutableArray array];
                 if ([[strongSelf class] primaryKey]) {
@@ -174,42 +174,100 @@ static NSString *DatabaseName = @"LocalData.db";
                     [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:&error];
                 }
                 
-                NSMutableArray *values = [NSMutableArray array];
-                for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
-                    [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath]];
-                }
-                
-                error = nil;
-                [db insertInto:[[strongSelf class] tableName] columns:columns values:@[values] error:&error];
+                //插入单独类的对象
+                [strongSelf persistentNoneRelationObjectWith:db];
                 
             } else { // 有关联对象的数据插入
-                //1. 先插1方表数据
-                NSArray *columns = [[strongSelf propertyDictionary] allKeys];
-                NSMutableArray *insertColumns = [NSMutableArray array];
-                NSMutableArray *values = [NSMutableArray array];
-                NSMutableArray *manyArray = [NSMutableArray array];
-                for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
-                    id obj = [strongSelf performSelector:NSSelectorFromString(keyPath) withObject:nil];
-                    if (![obj isKindOfClass:[NSArray class]]) {
-                        [values addObject:obj];
-                        [insertColumns addObject:keyPath];
-                    }else {
-                        [manyArray addObject:obj];
-                    }
-                }
                 
-                [db insertInto:[[strongSelf class] tableName] columns:insertColumns values:@[values] error:nil];
+                //1. 先插1方表数据 【只插入一次】
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+//                    [strongSelf persistentNoneRelationObjectWith:db ExcludeColumns:@[];
+                });
                 
                 //2. 再插n方表数据
-//                for (<#type *object#> in <#collection#>) {
-//                    <#statements#>
-//                }
+                for (ObjectRelationShip *ship in [[strongSelf class] relationShips]) {
+                    switch ([ship type]) {
+                        case ObjectRelationShipOneToManay: {
+//                            Class one = ship.cls1;
+                            Class many = ship.cls2;
+                            
+                            NSString *foreignKey = [[strongSelf class] primaryKey];
+                            id foreignKeyValue = [[strongSelf objectDictionary] objectForKey:foreignKey];
+                            
+                            
+                            for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
+                                id obj = [[strongSelf objectDictionary] objectForKey:keyPath];
+                                if ([obj isKindOfClass:[NSArray class]]) {
+                                    NSArray *array = (NSArray *)obj;
+                                    for (id perObj in array) {
+                                        if ([perObj isKindOfClass:many]) {
+                                            //插入单个Person对象，建立外键
+                                            NSMutableArray *insertColumns = [NSMutableArray array];
+                                            NSMutableArray *values = [NSMutableArray array];
+                                            
+                                            for ( NSString *keyPath in [[perObj propertyDictionary] allKeys]) {
+                                                
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                }
+
             }
             
         }
         
     }];
 }
+
+- (void)persistentNoneRelationObjectWith:(FMDatabase __weak*)db
+{
+    NSMutableArray *values = [NSMutableArray array];
+    NSArray *columns = [[self propertyDictionary] allKeys];
+    for (NSString *keyPath in columns) {
+//        [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath]];
+    }
+    
+    NSError *error = nil;
+    [db insertInto:[[self class] tableName]  columns:columns values:@[values] error:&error];
+
+}
+
+- (void)persistentNoneRelationObjectWith:(FMDatabase __weak*)db
+                          ExcludeColumns:(NSArray *) columns
+{
+    
+}
+
+- (void)persistentOneToManyObjectWith:(FMDatabase __weak*)db
+{
+    
+    NSMutableArray *insertColumns = [NSMutableArray array];
+    NSMutableArray *values = [NSMutableArray array];
+    NSMutableArray *manyArray = [NSMutableArray array];
+    for   (NSString *keyPath in [[self propertyDictionary] allKeys]) {
+        id obj = [self performSelector:NSSelectorFromString(keyPath) withObject:nil];
+        if (![obj isKindOfClass:[NSArray class]]) {
+            [values addObject:obj];
+            [insertColumns addObject:keyPath];
+        }else {
+            [manyArray addObject:obj];
+        }
+    }
+    
+    [db insertInto:[[self class] tableName] columns:insertColumns values:@[values] error:nil];
+}
+
+
 
 
 @end

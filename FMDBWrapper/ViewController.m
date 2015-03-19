@@ -59,15 +59,16 @@
 //        
 //    }];
     
-    [list asyncSaveWithSuccessCompletion:^{
-        
-    } FailCompletion:^{
-        
-    }];
+//    [list asyncSaveWithSuccessCompletion:^{
+//        
+//    } FailCompletion:^{
+//        
+//    }];
     
-//    BZObjectStore *store = [BZObjectStore openWithPath:path error:nil];
-//    [store saveObject:list error:nil];
+    BZObjectStore *store = [BZObjectStore openWithPath:path error:nil];
+    [store saveObject:list error:nil];
     
+    NSMutableArray *array = [store fetchObjects:[PersonList class] condition:nil error:nil];
     
 }
 
