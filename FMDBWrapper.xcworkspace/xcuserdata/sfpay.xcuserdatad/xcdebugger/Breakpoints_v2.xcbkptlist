@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FMDBWrapper/Core/ORM/FMDatabase+LocalDBHelper.m"
-            timestampString = "448421453.388986"
+            filePath = "FMDBWrapper/Core/ORM/ORMBaseModel.m"
+            timestampString = "448426571.013574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-insertInto:columns:values:error:"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-asyncSaveWithSuccessCompletion:FailCompletion:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FMDBWrapper/Core/ORM/FMDatabase+LocalDBHelper.m"
-            timestampString = "448424153.998682"
+            filePath = "FMDBWrapper/Core/ORM/ORMBaseModel.m"
+            timestampString = "448426571.013574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-createTableWithName:columns:constraints:error:"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-asyncSaveWithSuccessCompletion:FailCompletion:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

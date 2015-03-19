@@ -69,21 +69,16 @@ static NSString *DatabaseName = @"LocalData.db";
     [[op dbQueue] inDatabase:^(FMDatabase *db) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSError *error = nil;
-        
         NSString *tName = [[strongSelf class] tableName];
         
         if ([db tableExists:tName]) {
             
-            //表已经存在
-            //1. 按照当前Class类型，修正数据库表
+            //表已经存在 , 按照当前Class类型，修正数据库表
 //            NSString *sql = [[strongSelf class] fixTableSQL];
-            
-            //2. 插入数据
             
         } else {
             
-            //表不存在
-            //1. 按照当前Class类型，创建数据库表
+            //表不存在 , 按照当前Class类型，创建数据库表
             
             //1.1 有关联关系
             for (ObjectRelationShip *ship in [[strongSelf class] relationShips]) {
@@ -101,13 +96,22 @@ static NSString *DatabaseName = @"LocalData.db";
                         
                         //先创建1 的表
                         NSArray *columns = [[strongSelf propertyDictionary] allKeys];
+                        NSMutableArray *insertColumns = [NSMutableArray array]; //保存去除数组属性的字段
                         NSMutableArray *constraints = [NSMutableArray array];
                         if ([[strongSelf class] primaryKey]) {
                             NSString *constraint = [NSString stringWithFormat:@"PRIMARY KEY (%@)", [[strongSelf class] primaryKey]];
                             [constraints addObject:constraint];
                         }
+                        
+                        for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
+                            id obj = [[strongSelf objectDictionary] objectForKey:keyPath];
+                            if (![obj isKindOfClass:[NSArray class]]) {
+                                [insertColumns addObject:keyPath];
+                            }
+                        }
+                        
                         [db createTableWithName:[[strongSelf class] tableName]
-                                        columns:columns
+                                        columns:insertColumns
                                     constraints:constraints
                                           error:nil];
                         
@@ -124,7 +128,7 @@ static NSString *DatabaseName = @"LocalData.db";
                                         //1. 字段
                                         NSMutableArray *columns = [[[perObj propertyDictionary] allKeys] mutableCopy];
                                         [columns addObject:[[strongSelf class] primaryKey]];
-                                        //2. 主键、外键
+                                        //2. 主键、外键 约束
                                         NSMutableArray *constraints = [NSMutableArray array];
                                         if ([[perObj class] primaryKey]) {
                                             NSString *primaryKeyConstraint = [NSString stringWithFormat:@"PRIMARY KEY (%@)", [[perObj class] primaryKey]];
@@ -156,27 +160,51 @@ static NSString *DatabaseName = @"LocalData.db";
                 }
 
             }
-            
-            return ;
+        
             
             //1.2 没有关联关系
-            NSArray *columns = [[strongSelf propertyDictionary] allKeys];
-            NSMutableArray *constraints = [NSMutableArray array];
-            if ([[strongSelf class] primaryKey]) {
-                [constraints addObject:[NSString stringWithFormat:@"PRIMARY KEY (%@)" , [[strongSelf class] primaryKey]]];
+            if ([[[strongSelf class] relationShips] count] < 1) {
+                
+                NSArray *columns = [[strongSelf propertyDictionary] allKeys];
+                NSMutableArray *constraints = [NSMutableArray array];
+                if ([[strongSelf class] primaryKey]) {
+                    [constraints addObject:[NSString stringWithFormat:@"PRIMARY KEY (%@)" , [[strongSelf class] primaryKey]]];
+                    
+                    error = nil;
+                    [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:&error];
+                }
+                
+                NSMutableArray *values = [NSMutableArray array];
+                for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
+                    [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath]];
+                }
                 
                 error = nil;
-                [db createTableWithName:[[strongSelf class] tableName] columns:columns constraints:constraints error:&error];
+                [db insertInto:[[strongSelf class] tableName] columns:columns values:@[values] error:&error];
+                
+            } else { // 有关联对象的数据插入
+                //1. 先插1方表数据
+                NSArray *columns = [[strongSelf propertyDictionary] allKeys];
+                NSMutableArray *insertColumns = [NSMutableArray array];
+                NSMutableArray *values = [NSMutableArray array];
+                NSMutableArray *manyArray = [NSMutableArray array];
+                for (NSString *keyPath in [[strongSelf propertyDictionary] allKeys]) {
+                    id obj = [strongSelf performSelector:NSSelectorFromString(keyPath) withObject:nil];
+                    if (![obj isKindOfClass:[NSArray class]]) {
+                        [values addObject:obj];
+                        [insertColumns addObject:keyPath];
+                    }else {
+                        [manyArray addObject:obj];
+                    }
+                }
+                
+                [db insertInto:[[strongSelf class] tableName] columns:insertColumns values:@[values] error:nil];
+                
+                //2. 再插n方表数据
+//                for (<#type *object#> in <#collection#>) {
+//                    <#statements#>
+//                }
             }
-            
-            //2 插入数据 【每一个数组 == 一个对象的所有数据项】
-            NSMutableArray *values = [NSMutableArray array];
-            for (NSString *keyPath in columns) {
-                [values addObject:[[strongSelf objectDictionary] objectForKey:keyPath]];
-            }
-            
-            error = nil;
-            [db insertInto:[[strongSelf class] tableName] columns:columns values:@[values] error:&error];
             
         }
         

@@ -72,7 +72,7 @@
 }
 
 #pragma mark - insert
-/* 同时可插入多条数据 【多条数据组成一个数组】 */
+
 - (BOOL)insertInto:(NSString *)tableName
            columns:(NSArray *)columns
             values:(NSArray *)values

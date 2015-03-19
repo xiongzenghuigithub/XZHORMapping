@@ -37,6 +37,7 @@
 
     
     PersonList *list = [[PersonList alloc] init];
+    list.personListId = @"111";
     list.personList = @[person, person1];
     
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
